@@ -23,12 +23,11 @@ jobs:
               with:
                   # This is needed for semantic-release to work
                   fetch-depth: 0
-            - name: Install pnpm
-              uses: pnpm/action-setup@v4
+
+            - uses: pnpm/action-setup@v4
+              name: Install pnpm
               with:
                   version: 9
-            - name: Setup node
-              uses: actions/setup-node@v4
             - name:
                   Install Package Dependencies
                   # needed for both commitlint and semantic-release to work
@@ -75,7 +74,7 @@ jobs:
               run: |
                   echo "RELEASED=0" >> $GITHUB_ENV
                   pnpm audit signatures
-                  pnpm run husky
+                  pnpm run prepare
     deploy:
         name: Deploy to Vercel
         runs-on: ubuntu-24.04
@@ -93,6 +92,10 @@ jobs:
               run: npm --no-git-tag-version version ${{ needs.create-release.outputs.newVersion }}
             - name: Install Vercel CLI
               run: npm install --global vercel@latest
+            - uses: pnpm/action-setup@v4
+              name: Install pnpm
+              with:
+                  version: 9
             - name: Pull Vercel Environment Information
               run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
             - name: Build Project Artifacts

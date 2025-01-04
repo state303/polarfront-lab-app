@@ -22,12 +22,12 @@ jobs:
                   # analyzes commits from --from to --to)
                   # to work
                   fetch-depth: 0
-            - name: Install pnpm
-              uses: pnpm/action-setup@v4
+
+            - uses: pnpm/action-setup@v4
+              name: Install pnpm
               with:
                   version: 9
-            - name: Setup node
-              uses: actions/setup-node@v4
+
             - name:
                   Install dependencies
                   # If we don't do this, commitlint throws
@@ -51,4 +51,4 @@ jobs:
               env:
                   prtitle: ${{ github.event.pull_request.title }}
                   prdescription: ${{ github.event.pull_request.body }}
-              run: printf "$prtitle\n\n$prdescription" | npx commitlint
+              run: printf "$prtitle\n\n$prdescription" | pnpm commitlint
