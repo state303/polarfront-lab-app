@@ -61,15 +61,15 @@ jobs:
                   fi
 
                   # Run commitlint with computed arguments
-                  pnpm -- commitlint --verbose $clargs
+                  npx -- commitlint --verbose $clargs
             - name: Create GitHub release
               id: semanticrelease
               env:
                   GH_TOKEN: ${{ secrets.GH_TOKEN }}
               run: |
                   echo "RELEASED=0" >> $GITHUB_ENV
-                  pnpm audit signatures
-                  pnpm run prepare
+                  npm audit signatures
+                  npm run prepare
     deploy:
         name: Deploy to Vercel
         runs-on: ubuntu-24.04

@@ -39,7 +39,7 @@ jobs:
               env:
                   basesha: ${{ github.event.pull_request.base.sha }}
                   headsha: ${{ github.event.pull_request.head.sha }}
-              run: npm commitlint --from $basesha --to $headsha --verbose
+              run: npx commitlint --from $basesha --to $headsha --verbose
 
             - name: Run commitlint on PR Title and Description
               env:
