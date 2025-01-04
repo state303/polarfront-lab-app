@@ -18,11 +18,15 @@ jobs:
         name: Audit signatures of NPM dependencies
         runs-on: ubuntu-24.04
         steps:
+            - uses: pnpm/action-setup@v4
+              name: Install pnpm
+              with:
+                  version: 9
             - uses: actions/checkout@v2
             - name: Audit Provenance Attestations and Signatures
               run: |
-                  npm ci --legacy-peer-deps
-                  npm audit signatures
+                  pnpm i
+                  pnpm audit signatures
     deploy-to-vercel-preview-env:
         name: Deploy to Vercel Preview environment
         runs-on: ubuntu-24.04

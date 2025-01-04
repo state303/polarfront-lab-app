@@ -23,10 +23,15 @@ jobs:
               with:
                   # This is needed for semantic-release to work
                   fetch-depth: 0
+
+            - uses: pnpm/action-setup@v4
+              name: Install pnpm
+              with:
+                  version: 9
             - name:
                   Install Package Dependencies
                   # needed for both commitlint and semantic-release to work
-              run: npm ci --legacy-peer-deps
+              run: pnpm i
 
             - name: Lint commits on main since last version tag
               run: |
@@ -61,15 +66,15 @@ jobs:
                   fi
 
                   # Run commitlint with computed arguments
-                  npx -- commitlint --verbose $clargs
+                  pnpm -- commitlint --verbose $clargs
             - name: Create GitHub release
               id: semanticrelease
               env:
                   GH_TOKEN: ${{ secrets.GH_TOKEN }}
               run: |
                   echo "RELEASED=0" >> $GITHUB_ENV
-                  npm audit signatures
-                  npm run prepare
+                  pnpm audit signatures
+                  pnpm run prepare
     deploy:
         name: Deploy to Vercel
         runs-on: ubuntu-24.04
