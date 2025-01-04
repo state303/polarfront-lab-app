@@ -75,7 +75,7 @@ jobs:
               run: |
                   echo "RELEASED=0" >> $GITHUB_ENV
                   pnpm audit signatures
-                  pnpm run husky
+                  pnpm run prepare
     deploy:
         name: Deploy to Vercel
         runs-on: ubuntu-24.04
