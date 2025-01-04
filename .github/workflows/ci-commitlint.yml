@@ -22,18 +22,12 @@ jobs:
                   # analyzes commits from --from to --to)
                   # to work
                   fetch-depth: 0
-            - name: Install pnpm
-              uses: pnpm/action-setup@v4
-              with:
-                  version: 9
-            - name: Setup node
-              uses: actions/setup-node@v4
             - name:
                   Install dependencies
                   # If we don't do this, commitlint throws
                   # errors about not finding rules package
                   # for commit message conventions
-              run: pnpm i
+              run: npm ci --legacy-peer-deps
 
             # Using env in steps below to pass
             # required values from GitHub context rather

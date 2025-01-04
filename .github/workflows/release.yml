@@ -23,16 +23,10 @@ jobs:
               with:
                   # This is needed for semantic-release to work
                   fetch-depth: 0
-            - name: Install pnpm
-              uses: pnpm/action-setup@v4
-              with:
-                  version: 9
-            - name: Setup node
-              uses: actions/setup-node@v4
             - name:
                   Install Package Dependencies
                   # needed for both commitlint and semantic-release to work
-              run: pnpm i
+              run: npm ci --legacy-peer-deps
 
             - name: Lint commits on main since last version tag
               run: |
