@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        @apply bg-transparent m-0 p-0 box-border;
+    }
+    html,
+    body,
+    #root {
+        @apply text-foreground min-w-80 w-full h-full overflow-hidden;
+    }
+    :root {
+        --color-white: 0 0% 87.8%; /* #dfe9e0 */
+        --color-gray: 120 6.2% 59.2%; /* #95a197 */
+        --color-black: 180 6% 18.2%; /* #2b3131 */
+        --color-yellow: 55 88.2% 34.5%; /* #b2a606 */
+        --color-green: 138 45.5% 23.8%; /* #215e25 */
+        --color-red: 358 77.8% 52.7%; /* #e21a24 */
+        --color-brown: 33 23.9% 20.8%; /* #3f3327 */
+
+        /* din series (.5 → -5) */
+        --color-din-0-0-5: 60 27.2% 94.6%; /* #f3f2ee */
+        --color-din-0-1: 240 3% 83.3%; /* #d2d3d5 */
+        --color-din-0-1-5: 240 3% 73.5%; /* #b8b9bb */
+        --color-din-0-2: 240 2.7% 67.3%; /* #a8a9ab */
+        --color-din-0-2-5: 240 2.6% 58.8%; /* #909193 */
+        --color-din-0-3: 240 3% 54.3%; /* #84858a */
+        --color-din-0-3-5: 240 4% 49.2%; /* #777a81 */
+        --color-din-0-4: 240 4.5% 43.1%; /* #686870 */
+        --color-din-0-4-5: 240 4.9% 34.9%; /* #595c65 */
+        --color-din-0-5: 240 6% 29.6%; /* #4f515d */
+        --color-din-0-5-5: 240 9% 25.7%; /* #41444d */
+        --color-din-0-6: 240 7% 20%; /* #35373f */
+        --color-din-0-6-5: 240 10% 18.8%; /* #2e2e38 */
+        --color-din-0-7: 240 10% 16.9%; /* #262630 */
+        --color-din-0-7-5: 240 14% 12.5%; /* #1a1a22 */
+        --color-din-0-8: 240 15% 9.2%; /* #111119 */
+
+        --background: var(--color-white);
+        --foreground: var(--color-black);
+        --muted: var(--color-din-0-3-5);
+        --destructive: var(--color-red);
+    }
+
+    .dark {
+        --background: var(--color-black);
+        --foreground: var(--color-white);
+        --muted: var(--color-din-0-1-5);
+        --destructive: var(--color-red);
+    }
+}
