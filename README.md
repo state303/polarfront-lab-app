@@ -1,1 +1,1 @@
-# PFLab Frontend Work
+# Template for R3F + NextJS + Drei
