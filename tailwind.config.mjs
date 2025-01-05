@@ -17,8 +17,8 @@ const tailwindConfig = {
                 foreground: "var(--foreground)",
             },
             fontFamily: {
-                sans: ['"Pretendard Variable"', "Pretendard", "sans-serif"],
-                serif: ['"Pretendard Variable"', "Pretendard", "sans-serif"],
+                sans: ["Pretendard Variable", "Pretendard", "sans-serif"],
+                serif: ["Pretendard Variable", "Pretendard", "sans-serif"],
             },
         },
     },
